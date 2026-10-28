@@ -1,0 +1,228 @@
+[
+  {
+    "artifacts": [
+      {
+        "id": "call-note",
+        "text": "Unknown video call. Caller in police uniform says there is a Supreme Court case against you and you will be arrested. Says keep it secret and act immediately.",
+        "type": "voice_context"
+      },
+      {
+        "id": "followup-msg",
+        "text": "Police case will proceed unless you send money urgently. Do not tell anyone. Pay here: https://supremecourt-settlement-pay.xyz/pay",
+        "type": "message"
+      }
+    ],
+    "expected_band": "High concern",
+    "id": "test-digital-arrest",
+    "note": "TEST CASE, inspired by the Maharashtra Cyber film's dramatised scene. Not a real victim, not a transcript."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "I am your cousin, I am stuck and need money urgently right now. Please do not tell anyone in the family. Send payment here.",
+        "type": "message"
+      },
+      {
+        "id": "link-1",
+        "text": "Please pay urgently via https://paytm-secure-refund.in/pay?to=help@okaxis",
+        "type": "url"
+      }
+    ],
+    "expected_band": "High concern",
+    "id": "test-relative-urgent-link",
+    "note": "TEST CASE. The end-to-end test scenario from the brief."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "Your bank account will be blocked today. Update KYC immediately or account frozen. Share your OTP to verify your account: https://sbi-kyc-update.xyz/verify",
+        "type": "message"
+      }
+    ],
+    "expected_band": "High concern",
+    "id": "test-bank-kyc-phish",
+    "note": "TEST CASE."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "पोलीस तक्रार झाली आहे, तात्काळ पैसे पाठवा, कोणाला सांगू नका, नाहीतर अटक होईल.",
+        "type": "message"
+      }
+    ],
+    "expected_band": "High concern",
+    "id": "test-marathi-authority",
+    "note": "TEST CASE Marathi authority-pressure message."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "Happy birthday! Hope you have a lovely day. Call me when you are free this weekend, no rush at all.",
+        "type": "message"
+      }
+    ],
+    "expected_band": "Low concern",
+    "id": "test-benign-family",
+    "note": "TEST CASE benign control."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "Your monthly account statement is ready. You can download it from your account at https://www.sbi.co.in when convenient.",
+        "type": "message"
+      }
+    ],
+    "expected_band": "Low concern",
+    "id": "test-benign-bank-statement",
+    "note": "TEST CASE benign control using an official domain. No urgency, threat or payment instruction."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "Your order has shipped and should arrive by Friday. You can track it from the shop website if you like.",
+        "type": "message"
+      }
+    ],
+    "expected_band": "Low concern",
+    "id": "test-benign-order",
+    "note": "TEST CASE benign control."
+  },
+  {
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "text": "Hi, check this: https://bit.ly/3abcXYZ",
+        "type": "message"
+      }
+    ],
+    "expected_band": "Insufficient evidence",
+    "id": "test-ambiguous-short-link",
+    "note": "TEST CASE. Too little evidence to judge; the engine must say so rather than guess."
+  },
+  {
+    "id": "test-first-order-false-positive",
+    "expected_band": "Low concern",
+    "note": "TEST CASE adversarial: 'first' must not trigger 'fir', 'shipping' must not trigger 'pin'.",
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "type": "message",
+        "text": "This is my first order, please confirm shipping details when you are free."
+      }
+    ]
+  },
+  {
+    "id": "test-pin-code-postal",
+    "expected_band": "Low concern",
+    "note": "TEST CASE adversarial: postal PIN code is not a credential request.",
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "type": "message",
+        "text": "Please share your PIN code for delivery to Pune 411001."
+      }
+    ]
+  },
+  {
+    "id": "test-url-credentials",
+    "expected_band": "Suspicious",
+    "note": "TEST CASE: brand shown before '@' is not the real host.",
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "type": "message",
+        "text": "Verify here urgently: https://paytm.com@evil-example.xyz/login"
+      }
+    ]
+  },
+  {
+    "id": "test-official-with-query",
+    "expected_band": "Low concern",
+    "note": "TEST CASE: official domain with a query token must stay Low and the token must never appear in evidence.",
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "type": "message",
+        "text": "Download your statement when convenient: https://www.sbi.co.in/statement?session=abc123token"
+      }
+    ]
+  },
+  {
+    "id": "test-weak-similarity",
+    "expected_band": "Low concern",
+    "note": "TEST CASE: similar wording alone is a weak link, not a band upgrade.",
+    "artifacts": [
+      {
+        "id": "msg-1",
+        "type": "message",
+        "text": "Your package is delayed, click to reschedule delivery."
+      },
+      {
+        "id": "msg-2",
+        "type": "message",
+        "text": "Your package is delayed, click to reschedule delivery today."
+      }
+    ]
+  },
+  {
+    "id": "test-marathi-relative-payment",
+    "expected_band": "High concern",
+    "artifacts": [
+      {
+        "id": "a1",
+        "type": "message",
+        "text": "आई, मी अडचणीत आहे, ५००० रुपये पाठव, कोणाला सांगू नकोस https://pay-hdfc-secure.xyz/pay"
+      }
+    ]
+  },
+  {
+    "id": "test-hindi-relative-new-number",
+    "expected_band": "High concern",
+    "artifacts": [
+      {
+        "id": "a1",
+        "type": "message",
+        "text": "माँ, मेरा नया नंबर है, इसे सेव कर लो, 2000 रुपये भेजो urgently, किसी को मत बताना"
+      }
+    ]
+  },
+  {
+    "id": "test-genuine-otp-notice",
+    "expected_band": "Low concern",
+    "artifacts": [
+      {
+        "id": "a1",
+        "type": "message",
+        "text": "Your OTP is 482913. Do not share it with anyone. -HDFC Bank"
+      }
+    ]
+  },
+  {
+    "id": "test-punycode-paypal",
+    "expected_band": "Suspicious",
+    "artifacts": [
+      {
+        "id": "a1",
+        "type": "message",
+        "text": "Verify here: https://xn--pypal-4ve.com/login"
+      }
+    ]
+  },
+  {
+    "id": "test-benign-aai-greeting",
+    "expected_band": "Insufficient evidence",
+    "artifacts": [
+      {
+        "id": "a1",
+        "type": "message",
+        "text": "आई, कशी आहेस? उद्या फोन कर."
+      }
+    ]
+  }
+]

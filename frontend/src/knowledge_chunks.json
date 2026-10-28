@@ -1,0 +1,58 @@
+[
+  {
+    "id": "01-reporting-fraud-0",
+    "title": "Reporting financial cyber fraud in India",
+    "source": "National Cyber Crime Reporting Portal guidance (curated summary)",
+    "file": "01-reporting-fraud.md",
+    "chunk_index": 0,
+    "text": "If money was lost, act in this order: stop further payments, call the\nnational cybercrime helpline 1930, report at cybercrime.gov.in, and inform\nyour bank through its official number. Keep the complaint reference and the\nportal acknowledgement number. Recovery is not guaranteed; anyone who offers\nrecovery for an upfront fee should be treated as suspicious. Preserve the\nmessage, link, phone number, UPI id, transaction reference and screenshots\nbefore deleting anything."
+  },
+  {
+    "id": "02-authority-calls-0",
+    "title": "Verifying an authority call (digital arrest pattern)",
+    "source": "Maharashtra Cyber awareness guidance + CERT-In verification guidance (curated summary)",
+    "file": "02-authority-calls.md",
+    "chunk_index": 0,
+    "text": "A genuine authority does not demand payment over a video call, does not ask\nyou to keep a case secret, and does not show a court document on screen as\nproof of identity. A uniform, an emblem backdrop and a letterhead image can\nall be staged. The safe verification step is: hang up, then call back only\non a number you already trust — never the number shown on screen. Use a\npre-agreed family safe word for relatives. Never share an OTP, PIN or\npassword with a caller, and never transfer money while under pressure."
+  },
+  {
+    "id": "03-otp-safety-0",
+    "title": "OTP, PIN and credential safety",
+    "source": "CERT-In / bank fraud guidance (curated summary)",
+    "file": "03-otp-safety.md",
+    "chunk_index": 0,
+    "text": "No legitimate bank, police officer or government official needs your OTP,\nPIN, password or CVV to help you. Messages that threaten account closure\nunless you update KYC immediately and share an OTP are a classic phishing\npattern. Go to the official website or app yourself — never through the\nlink in the suspicious message — and check the account status there.\nA postal PIN code for delivery is not the same as a bank PIN; context\nmatters, which is why credential patterns in this product are phrases,\nnot bare words."
+  },
+  {
+    "id": "04-link-checks-0",
+    "title": "Checking a suspicious link safely",
+    "source": "Google Safe Browsing / VirusTotal documentation summaries (curated)",
+    "file": "04-link-checks.md",
+    "chunk_index": 0,
+    "text": "Do not click a suspicious link to find out what it is. Check the domain\nitself: a brand name inside a domain is not proof it belongs to that\nbrand, a padlock (HTTPS) only means the connection is encrypted, and a\nshortened link hides its destination. A clean result from a reputation\nservice does not prove safety, especially for a domain created very\nrecently that no service has seen yet. A URL that shows a brand before\nan '@' sign has a different real host after the '@'. Never paste a link\ncontaining a session token into a public checker without stripping it."
+  },
+  {
+    "id": "05-upi-fraud-0",
+    "title": "UPI fraud patterns",
+    "source": "RBI / NPCI public guidance summaries (curated)",
+    "file": "05-upi-fraud.md",
+    "chunk_index": 0,
+    "text": "Common UPI patterns: a stranger impersonating a relative in urgent need,\na fake customer-care number found by searching online, a QR code or\ncollect request that actually takes money instead of receiving it, and a\nrefund offer that requires a small advance payment first. Verify a\nrelative by calling a number you already have, not by replying in the\nsame chat. Verify a business by its official website or app, not by a\nnumber in a message. If a payment was sent to a fraudster, report on\n1930 and cybercrime.gov.in and inform your bank immediately."
+  },
+  {
+    "id": "06-reporting-fraud-mr-0",
+    "title": "फसवणूक झाल्यास काय करावे (मराठी)",
+    "source": "https://cybercrime.gov.in | Retrieved: 2026-10-28",
+    "file": "06-reporting-fraud-mr.md",
+    "chunk_index": 0,
+    "text": "आर्थिक फसवणूक झाल्यास तात्काळ राष्ट्रीय सायबर हेल्पलाइन **१९३०** वर कॉल करा आणि **cybercrime.gov.in** वर तक्रार नोंदवा. पुरावे जतन करा: मेसेज, लिंक, व्यवहार क्रमांक आणि स्क्रीनशॉट. कोणालाही OTP, PIN किंवा पासवर्ड देऊ नका. पैसे परत मिळतील याची खात्री कोणीही देऊ शकत नाही."
+  },
+  {
+    "id": "07-authority-calls-mr-0",
+    "title": "पोलीस / अधिकारी असल्याचे सांगणारे कॉल (मराठी)",
+    "source": "https://cybercrime.gov.in | Retrieved: 2026-10-28",
+    "file": "07-authority-calls-mr.md",
+    "chunk_index": 0,
+    "text": "खरे पोलीस किंवा अधिकारी व्हिडिओ कॉलवर पैसे मागत नाहीत आणि डिजिटल अटक अशी कोणतीही प्रक्रिया नाही. असा कॉल आल्यास घाबरू नका, कॉल बंद करा, पैसे पाठवू नका आणि अधिकृत क्रमांकावरून खात्री करा. संशयास्पद कॉलची माहिती **१९३०** वर द्या."
+  }
+]

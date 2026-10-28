@@ -1,0 +1,5 @@
+{
+  "date": "2026-10-28T08:40:43.846296+00:00",
+  "status": "not_run",
+  "reason": "no project credentials (SUPABASE_URL / USER_A_JWT / USER_B_JWT / SUPABASE_ANON_KEY)"
+}

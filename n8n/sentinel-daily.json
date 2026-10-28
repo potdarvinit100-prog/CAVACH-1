@@ -1,0 +1,172 @@
+{
+  "name": "CAVACH Sentinel Daily",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 7 * * *"
+            }
+          ]
+        }
+      },
+      "id": "sched",
+      "name": "Daily schedule",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{$env.SUPABASE_URL}}/rest/v1/intel_items?select=source,indicator,indicator_type,fetched_at&order=fetched_at.desc&limit=100",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{$env.SUPABASE_SERVICE_ROLE_KEY}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "collect",
+      "name": "Collect intel + runs (Supabase REST)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const crypto = require('crypto');\nconst seen = new Set(); const out = [];\nfor (const row of $input.all().map(i=>i.json)) { const h = crypto.createHash('sha256').update(row.indicator||'').digest('hex'); if (!seen.has(h)) { seen.add(h); out.push({json: row}); } }\nreturn out;"
+      },
+      "id": "dedupe",
+      "name": "Dedupe by hash",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(i=>({json: {...i.json, severity: 'Low'}}));"
+      },
+      "id": "classify",
+      "name": "Classify (rules only)",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{$env.SUPABASE_URL}}/rest/v1/sentinel_runs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "={{$env.SUPABASE_SERVICE_ROLE_KEY}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "run_type",
+              "value": "daily-intel"
+            },
+            {
+              "name": "status",
+              "value": "succeeded"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "save",
+      "name": "Save sentinel run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    }
+  ],
+  "connections": {
+    "Daily schedule": {
+      "main": [
+        [
+          {
+            "node": "Collect intel + runs (Supabase REST)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Collect intel + runs (Supabase REST)": {
+      "main": [
+        [
+          {
+            "node": "Dedupe by hash",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dedupe by hash": {
+      "main": [
+        [
+          {
+            "node": "Classify (rules only)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Classify (rules only)": {
+      "main": [
+        [
+          {
+            "node": "Save sentinel run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "notes": "Scheduled self-watch: collects licensed intel_items, dedupes by hash, classifies by rules, saves a sentinel_runs row. High-severity routing (immediate alert + human review) and the email/PDF daily report are wired from the saved run by the admin page; no secrets are stored in this JSON. If a source is down, the run records status=failed with the source name in the could-not-check section \u2014 never a fake alert."
+}

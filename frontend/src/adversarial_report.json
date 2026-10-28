@@ -1,0 +1,71 @@
+{
+  "n": 9,
+  "robust": 9,
+  "evasion_rate": 0.0,
+  "rows": [
+    {
+      "lang": "en",
+      "transform": "spacing",
+      "band": "Suspicious",
+      "score": 45,
+      "robust": true
+    },
+    {
+      "lang": "en",
+      "transform": "homoglyph",
+      "band": "High concern",
+      "score": 70,
+      "robust": true
+    },
+    {
+      "lang": "en",
+      "transform": "case",
+      "band": "High concern",
+      "score": 70,
+      "robust": true
+    },
+    {
+      "lang": "en",
+      "transform": "spacing",
+      "band": "High concern",
+      "score": 70,
+      "robust": true
+    },
+    {
+      "lang": "en",
+      "transform": "homoglyph",
+      "band": "High concern",
+      "score": 90,
+      "robust": true
+    },
+    {
+      "lang": "en",
+      "transform": "case",
+      "band": "High concern",
+      "score": 90,
+      "robust": true
+    },
+    {
+      "lang": "mr",
+      "transform": "spacing",
+      "band": "Suspicious",
+      "score": 25,
+      "robust": true
+    },
+    {
+      "lang": "mr",
+      "transform": "homoglyph",
+      "band": "High concern",
+      "score": 75,
+      "robust": true
+    },
+    {
+      "lang": "mr",
+      "transform": "case",
+      "band": "High concern",
+      "score": 100,
+      "robust": true
+    }
+  ],
+  "note": "Synthetic-variant test-set result, not real-world evasion rate."
+}
